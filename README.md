@@ -1,8 +1,8 @@
 # ucilark - UCI parser and encoder library in python
 
-based on python [lark](https://github.com/lark-parser/lark/) parsing toolkit.
+Based on python [lark](https://github.com/lark-parser/lark/) parsing toolkit.
 
-grammar definition : [uci.lark](ucilark/uci.lark)
+Lark-flavoured EBNF grammar definition for UCI : [uci.lark](ucilark/uci.lark).
 
 ## Installation
 
