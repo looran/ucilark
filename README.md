@@ -2,18 +2,23 @@
 
 The Universal Chess Interface (UCI) is an open communication protocol that enables chess engines to communicate with user interfaces.
 
+`ucilark` parses from a UCI line string to a `UCI_msg` object containing `dicts`, and can encode the other way around.
+
 Parsing is based on python [lark](https://github.com/lark-parser/lark/) toolkit.
 
-> [!NOTE]
-> This parser does not cover the full UCI specification
-> 
-> See the Lark-flavoured EBNF grammar definition of supported messages : [uci.lark](ucilark/uci.lark)
+## Overview
+
+- [usage examples](#usage-examples) bellow
+- the Lark-flavoured EBNF grammar definition of supported messages : [uci.lark](ucilark/uci.lark)
+  - (only a subset of the UCI specification is supported) 
+- the code at [ucilark.py](ucilark/ucilark.py)
+- some tests at [test_ucilark.py](tests/test_ucilark.py).
 
 ## Installation
 
 `pip install ucilark`
 
-## Usage example
+## Usage examples
 
 ### UCI message: position
 ```
