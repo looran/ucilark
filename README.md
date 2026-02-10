@@ -2,7 +2,10 @@
 
 Based on python [lark](https://github.com/lark-parser/lark/) parsing toolkit.
 
-Lark-flavoured EBNF grammar definition for UCI : [uci.lark](ucilark/uci.lark).
+> [!NOTE]
+> This parser does not cover the full UCI specification
+> 
+> See the Lark-flavoured EBNF grammar definition of supported messages : [uci.lark](ucilark/uci.lark)
 
 ## Installation
 
