@@ -1,0 +1,78 @@
+# UCI chess protocol definition in Lark-flavoured EBNF grammar
+# part of https://github.com/looran/ucilark
+# references:
+# - original specification : Description of the universal chess interface (UCI), April  2006
+#   http://download.shredderchess.com/div/uci.zip
+# - gist copy of the original spec
+#   https://gist.github.com/DOBRO/2592c6dad754ba67e6dcaec8c90165bf
+# - Stockfish UCI & Commands
+#   https://official-stockfish.github.io/docs/stockfish-wiki/UCI-&-Commands.html
+
+line: bestmove | go | id | info | isready | option | position | readyok | setoption | stop | uci | ucinewgame | uciok
+
+bestmove : "bestmove" MOVE ponder?
+ponder : "ponder" MOVE
+
+go : "go" gomovetime? godepth?
+gomovetime : "movetime" INT
+godepth : "depth" INT
+
+id : "id" idname? idauthor?
+idname : "name" /.+/
+idauthor : "author" /.+/
+
+info : "info" (currmove | currmovenumber | depth | hashfull | multipv | nodes | nps | score | seldepth | string | tbhits | time | pv)+
+currmove: "currmove" MOVE
+currmovenumber: "currmovenumber" INT
+depth : "depth" INT
+hashfull : "hashfull" INT
+multipv: "multipv" INT
+seldepth: "seldepth" INT
+nodes: "nodes" INT
+nps: "nps" INT
+string: "string" /.+/
+tbhits: "tbhits" INT
+time: "time" INT
+pv: "pv" MOVE+
+score : "score" cp? mate? lowerbound? upperbound?
+cp : "cp" SIGNED_INT
+mate : "mate" SIGNED_INT
+lowerbound: "lowerbound"
+upperbound: "upperbound"
+
+isready : "isready"
+
+option : "option" /.+/
+
+position : "position" fen? moves?
+fen : "fen" movefen active castling enpassant halfmove_clock fullmove_clock
+movefen : /[a-zA-Z1-8\/]+/
+active: /[bw]/
+castling: /[KQkq]+|\-/
+enpassant: /([a-h][0-8])|-/
+halfmove_clock: INT
+fullmove_clock: INT
+moves: "moves" MOVE*
+
+readyok : "readyok"
+
+setoption : "setoption" "name" name "value" value
+name: /[^ ]+/
+value: /[^ ]+/
+
+stop : "stop"
+
+uci : "uci"
+
+ucinewgame : "ucinewgame"
+
+uciok : "uciok"
+
+MOVE : /([a-h][1-8]){2}[qbnr]?/
+
+%import common.WS
+%import common.INT
+%import common.SIGNED_INT
+%import common.DIGIT
+%import common.LETTER
+%ignore WS
