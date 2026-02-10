@@ -1,6 +1,8 @@
 # ucilark - UCI parser and encoder library in python
 
-Based on python [lark](https://github.com/lark-parser/lark/) parsing toolkit.
+The Universal Chess Interface (UCI) is an open communication protocol that enables chess engines to communicate with user interfaces.
+
+Parsing is based on python [lark](https://github.com/lark-parser/lark/) toolkit.
 
 > [!NOTE]
 > This parser does not cover the full UCI specification
