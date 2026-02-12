@@ -52,12 +52,12 @@ class UCI_msg:
                 return ' '.join([_str(j, i) for j in i])
             else:
                 return str(i)
-        # TODO: make this forced sorting more pythonic
+
+        # place some values last
         for last_val in ['pv']:
-            if last_val in self.args:
-                x = self.args[last_val]
-                self.args.pop(last_val)
-                self.args[last_val] = x
+             if last_val in self.args:
+                self.args[last_val] = self.args.pop(last_val)
+
         # use cached line, otherwise iterate args tree
         if self.line:
             s = self.line
