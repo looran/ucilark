@@ -48,7 +48,6 @@ class UCI_msg:
                 else:
                     return ' '.join([ f"{k} {_str(v, k)}" for k, v in i.items() ]).strip()
             elif type(i) in [list, tuple]:
-                #return ' '.join(i)
                 return ' '.join([_str(j, i) for j in i])
             else:
                 return str(i)
