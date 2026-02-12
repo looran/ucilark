@@ -73,6 +73,9 @@ class UCI_msg:
     def __repr__(self):
         return f"UCI_msg: {self.encode()}"
 
+    def __eq__(self, other):
+        return (self.cmd == other.cmd) and (self.args == other.args)
+
     def get(self, name, name2=None):
         if name in self.args:
             if name2:

@@ -59,6 +59,16 @@ class Test_uci_msg:
         m.line = None # remove cache
         assert m.encode() == line
 
+    @pytest.mark.parametrize("m1,m2,expected", [
+        (UCI_msg({"bestmove": ['0000']}), UCI_msg({"bestmove": ['0000']}), True),
+        (UCI_msg({"bestmove": ['0000']}), UCI_msg({"bestmove": []}), False),
+        (UCI_msg({"info": {"depth": 1}}), UCI_msg({"info": {"depth": 1}}), True),
+        (UCI_msg({"info": {"depth": 1}}), UCI_msg({"info": {"depth": 2}}), False),
+    ])
+    def test_equal(self, m1, m2, expected):
+        equals = m1 == m2
+        assert equals == expected
+
 if __name__ == '__main__':
     #logging.basicConfig(level=logging.DEBUG)
     logging.basicConfig(level=logging.INFO)
