@@ -12,7 +12,7 @@ class UCI_trans(lark.Transformer):
 
     def __default__(self, tok, childs, meta):
         _log.debug(f'Trans-node {tok.type} {str(tok)} {len(childs)} : {childs}')
-        if str(tok) in ["id", "info", "score", "position", "fen", "setoption"]:
+        if str(tok) in ["id", "info", "score", "position", "fen", "setoption", "go"]:
             return (str(tok), dict(childs)) # dicts
         elif str(tok) in ["cp", "mate"]:
             return (str(tok), int(childs[0])) # signed integers

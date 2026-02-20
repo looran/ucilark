@@ -13,9 +13,8 @@ line: bestmove | go | id | info | isready | option | position | readyok | setopt
 bestmove : "bestmove" MOVE ponder?
 ponder : "ponder" MOVE
 
-go : "go" gomovetime? godepth?
-gomovetime : "movetime" INT
-godepth : "depth" INT
+go : "go" (movetime | depth)*
+movetime : "movetime" INT
 
 id : "id" idname? idauthor?
 idname : "name" /.+/

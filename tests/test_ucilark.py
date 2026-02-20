@@ -45,6 +45,18 @@ class Test_uci_msg:
         ("bestmove", # bestmove with ponder
             "bestmove c2g6 ponder f6g7",
             ['c2g6', ('ponder', 'f6g7')]),
+        ("go", # go 1
+            "go",
+            {}),
+        ("go", # go 2
+            "go depth 5",
+            {'depth': 5}),
+        ("go", # go 3
+            "go movetime 8000",
+            {'movetime': 8000}),
+        ("go", # go 4
+            "go depth 5 movetime 8000",
+            {'depth': 5, 'movetime': 8000}),
         ("setoption", # setoption
             "setoption name MultiPV value 1",
             {"name": "MultiPV", "value": "1"}),
